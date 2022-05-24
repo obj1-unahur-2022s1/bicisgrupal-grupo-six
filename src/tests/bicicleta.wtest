@@ -1,0 +1,14 @@
+import bicis.*
+import accesorios.*
+
+describe "Bicicleta"{
+	const bici = new Bicicleta(rodado = 2, largo = 2, marca = "bmx", accesorios = [new Farolito()])
+	method initialize(){
+		
+	}
+	
+	
+	test "Peso total"{
+		assert.equals(1.5, bici.peso())
+	}
+}s
