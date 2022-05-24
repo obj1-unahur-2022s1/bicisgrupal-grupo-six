@@ -16,7 +16,7 @@ class Bicicleta{
 	}
 	
 	method peso(){
-		return rodado / 2 + accesorios.pesoTotal()
+		return rodado / 2 + self.pesoTotalAccesorios()
 	}
 	
 	method tieneLuz(){
@@ -25,5 +25,9 @@ class Bicicleta{
 	
 	method cantidadAccesoriosLivianos(){
 		return accesorios.count{acc=>acc.peso() < 1}
+	}
+	
+	method pesoTotalAccesorios(){
+		return accesorios.sum{acc=>acc.peso()}
 	}
 }
