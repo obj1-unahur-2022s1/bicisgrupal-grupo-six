@@ -20,7 +20,7 @@ class Bicicleta{
 	}
 	
 	method tieneLuz(){
-		return accesorios.ant{acc=>acc.esLuminoso()}
+		return accesorios.any{acc=>acc.esLuminoso()}
 	}
 	
 	method cantidadAccesoriosLivianos(){
