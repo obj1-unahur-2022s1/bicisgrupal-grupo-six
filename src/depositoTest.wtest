@@ -1,0 +1,52 @@
+import bicis.*
+import accesorios.*
+import depositos.*
+
+
+test" Los métodos de deposito funcionan correctamente teniendo tres bicis(definidas en bicisTest)"{
+	const farolito1 = new Farolito()
+    const bici1 = new Bicicleta(rodado=28, largo=150, marca="Olmo")
+    bici1.agregarAccesorio(farolito1)
+      	
+    const canasto1 = new Canasto(volumen = 8)
+    const morral1 = new Morral(largo=21, tieneOjoGato=true)
+    const bici2 = new Bicicleta(rodado=26, largo=110, marca="Legnano")
+    bici2.agregarAccesorio(farolito1)
+	bici2.agregarAccesorio(canasto1)
+	bici2.agregarAccesorio(morral1)
+      	
+      	
+    const morral2 = new Morral(largo=6, tieneOjoGato=false)
+    const bici3 = new Bicicleta(rodado=20, largo=90, marca="Legnano")
+    bici3.agregarAccesorio(morral2)
+      	
+    const deposito = new Deposito()
+      	
+    deposito.agregarBicicleta(bici1)
+    deposito.agregarBicicleta(bici2)
+    deposito.agregarBicicleta(bici3)
+
+    assert.equals([bici1,bici2], deposito.bicisRapidas())
+    //assert.equals(["Olmo","Legnano"], deposito.bicicletasConMarca())
+    assert.notThat(deposito.esNocturno())
+    assert.that(deposito.hayBiciParaLlevarCarga(10))
+    assert.notThat(deposito.hayBiciParaLlevarCarga(50))
+}
+
+test "Un depósito que tenga dos bicis con rodado 28 y rodado 26 (definidas en bicisTest), sí es nocturno."{
+	const farolito1 = new Farolito()
+    const bici1 = new Bicicleta(rodado=28, largo=150, marca="Olmo")
+    bici1.agregarAccesorio(farolito1)
+      	
+    const canasto1 = new Canasto(volumen = 8)
+    const morral1 = new Morral(largo=21, tieneOjoGato=true)
+    const bici2 = new Bicicleta(rodado=26, largo=110, marca="Legnano")
+    bici2.agregarAccesorio(farolito1)
+	bici2.agregarAccesorio(canasto1)
+	bici2.agregarAccesorio(morral1)
+	
+	const deposito2 = new Deposito()
+	deposito2.agregarBicicleta(bici1)
+	deposito2.agregarBicicleta(bici2)
+	assert.that(deposito2.esNocturno())
+}
