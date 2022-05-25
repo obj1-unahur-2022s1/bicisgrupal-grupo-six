@@ -1,0 +1,57 @@
+import accesorios.*
+import bicis.*
+
+	
+test "Peso total de bici con rodado 2 y de accesorio un Farolito, es 1,5"{
+	const bici = new Bicicleta(rodado = 2, largo = 2, marca = "bmx", accesorios = [new Farolito()])
+	assert.equals(1.5, bici.peso())
+}
+
+test "Métodos de bicicleta funcionan correctamente en ejemplo 1"{
+	const farolito1 = new Farolito()
+	const bici1 = new Bicicleta(rodado=28, largo=150, marca="Olmo")
+	
+	
+	bici1.agregarAccesorio(farolito1)
+	assert.equals(85, bici1.altura())
+	assert.equals(34, bici1.velocidadCrucero())
+	assert.equals(0, bici1.carga())
+	assert.equals(14.5, bici1.peso())
+	assert.that(bici1.tieneLuz())
+	assert.equals(1,bici1.cantidadAccesoriosLivianos())
+	
+}
+
+test "Métodos de bicicleta funcionan correctamente en ejemplo 2"{
+	const farolito1 = new Farolito()
+	const canasto1 = new Canasto(volumen = 8)
+	const morral1 = new Morral(largo=21, tieneOjoGato=true)
+	const bici2 = new Bicicleta(rodado=26, largo=110, marca="Legnano")
+	
+	
+	bici2.agregarAccesorio(farolito1)
+	bici2.agregarAccesorio(canasto1)
+	bici2.agregarAccesorio(morral1)
+	assert.equals(80, bici2.altura())
+	assert.equals(28, bici2.velocidadCrucero())
+	assert.equals(23, bici2.carga())
+	assert.equals(15.5, bici2.peso())
+	assert.that(bici2.tieneLuz())
+	assert.equals(2,bici2.cantidadAccesoriosLivianos())
+	
+}
+
+test "Métodos de bicicleta funcionan correctamente en ejemplo 3"{
+	const morral1 = new Morral(largo=6, tieneOjoGato=false)
+	const bici3 = new Bicicleta(rodado=20, largo=90, marca="Legnano")
+	
+	
+	bici3.agregarAccesorio(morral1)
+	assert.equals(65, bici3.altura())
+	assert.equals(22, bici3.velocidadCrucero())
+	assert.equals(2, bici3.carga())
+	assert.equals(11.2, bici3.peso())
+	assert.notThat(bici3.tieneLuz())
+	assert.equals(0,bici3.cantidadAccesoriosLivianos())
+	
+}

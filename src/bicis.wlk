@@ -1,6 +1,6 @@
 class Bicicleta{
-	var rodado
-	var largo
+	var  rodado
+	var  largo
 	const marca
 	const accesorios = []
 	
@@ -16,14 +16,22 @@ class Bicicleta{
 	}
 	
 	method peso(){
-		return rodado / 2 + accesorios.pesoTotal()
+		return rodado / 2 + self.pesoTotalAccesorios()
 	}
 	
 	method tieneLuz(){
-		return accesorios.ant{acc=>acc.esLuminoso()}
+		return accesorios.any{acc=>acc.esLuminoso()}
 	}
 	
 	method cantidadAccesoriosLivianos(){
 		return accesorios.count{acc=>acc.peso() < 1}
+	}
+	
+	method agregarAccesorio(accesorio){ accesorios.add(accesorio)}
+	
+	method marca(){ return marca }
+	
+	method pesoTotalAccesorios(){
+		return accesorios.sum{acc => acc.peso()}
 	}
 }
