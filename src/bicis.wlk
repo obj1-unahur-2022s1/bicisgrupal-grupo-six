@@ -11,27 +11,21 @@ class Bicicleta{
 		else return rodado + 2
 	}
 	
-	method carga(){
-		return accesorios.sum{acc=>acc.carga()}
-	}
+	method carga(){ return accesorios.sum{acc=>acc.carga()} }
 	
-	method peso(){
-		return rodado / 2 + self.pesoTotalAccesorios()
-	}
+	method peso(){ return rodado / 2 + self.pesoTotalAccesorios() }
 	
-	method tieneLuz(){
-		return accesorios.any{acc=>acc.esLuminoso()}
-	}
+	method largo(){ return largo }
 	
-	method cantidadAccesoriosLivianos(){
-		return accesorios.count{acc=>acc.peso() < 1}
-	}
+	method tieneLuz(){ return accesorios.any{acc=>acc.esLuminoso()} }
+	
+	method cantidadDeAccesorios(){ return accesorios.size()}
+	
+	method cantidadAccesoriosLivianos(){ return accesorios.count{acc=>acc.peso() < 1} }
 	
 	method agregarAccesorio(accesorio){ accesorios.add(accesorio)}
 	
 	method marca(){ return marca }
 	
-	method pesoTotalAccesorios(){
-		return accesorios.sum{acc => acc.peso()}
-	}
+	method pesoTotalAccesorios(){ return accesorios.sum{acc => acc.peso()} }
 }
