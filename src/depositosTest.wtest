@@ -4,7 +4,6 @@ import depositos.*
 
 describe "Depositos y bicicletas"{
 	// Creación  de las bicis y el deposito.
-	const bici = new Bicicleta(rodado = 2, largo = 2, marca = "bmx", accesorios = [new Farolito()])
 	
 	const farolito1 = new Farolito()
     const bici1 = new Bicicleta(rodado=28, largo=150, marca="Olmo")
@@ -102,9 +101,32 @@ describe "Depositos y bicicletas"{
     test "No hay bicis compañeras en deposito3"{
         assert.notThat(deposito3.hayBicisCompanieras())
     }
-    test "Hay 2 pares de bicis companieras en deposito1"{
-        assert.equals(2,deposito1.parejasDeCompanieras().size())
+    
+    test "Hay 2 pares de bicis companieras en deposito1(Marca)"{
+    	
+    	const primerPar = deposito1.parejasDeCompanieras().get(0)
+    	const objetivoPrimerPar = new ParDeBici(bicis=[bici3,bici7])
+       	const res1 = objetivoPrimerPar.bicis().get(0).marca() == primerPar.bicis().get(1).marca()
+       	const segundoPar = deposito1.parejasDeCompanieras().get(1)
+    	const objetivoSegundoPar = new ParDeBici(bicis=[bici7,bici3])
+       	const res2 = objetivoSegundoPar.bicis().get(0).marca() == segundoPar.bicis().get(1).marca()
+       	assert.that(res1 and res2)
     }
+    
+    test "Hay 2 pares de bicis companieras en deposito1(Parte1)(Largo)"{
+    	
+    	const primerPar = deposito1.parejasDeCompanieras().get(0)
+    	const objetivoPrimerPar = new ParDeBici(bicis=[bici3,bici7])
+       	assert.equals(objetivoPrimerPar.bicis().get(0).largo() - 3, primerPar.bicis().get(1).largo())
+    }
+    
+    test "Hay 2 pares de bicis companieras en deposito1(Parte2)(Largo)"{
+    	
+    	const segundoPar = deposito1.parejasDeCompanieras().get(1)
+    	const objetivoSegundoPar = new ParDeBici(bicis=[bici7,bici3])
+    	assert.equals(objetivoSegundoPar.bicis().get(0).largo() + 3, segundoPar.bicis().get(1).largo())
+    }
+    
     test "Se hizo la luz en deposito1"{
         assert.that(deposito1.seHizoLaLuz())
     }
