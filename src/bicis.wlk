@@ -28,4 +28,7 @@ class Bicicleta{
 	method marca(){ return marca }
 	
 	method pesoTotalAccesorios(){ return accesorios.sum{acc => acc.peso()} }
+
 }
+
+
